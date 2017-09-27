@@ -67,6 +67,7 @@ alias app='yarn start'
 # ssh
 alias ssh-login='ssh-add ~/.ssh/id_rsa'
 # misc
+alias serve='python -m SimpleHTTPServer'
 alias chrome-debug='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
 alias plain='THEME=plain zsh'
 alias bullet='THEME=bullet zsh'
