@@ -34,6 +34,7 @@ Plug 'sirver/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
+Plug 'ervandew/supertab'
 
 " Git
 Plug 'tpope/vim-fugitive'
@@ -55,6 +56,10 @@ Plug 'carlitux/deoplete-ternjs'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
 Plug 'mhartington/deoplete-typescript'
+
+" Python
+Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
 
 " Initialize plugin system
 call plug#end()
@@ -337,9 +342,6 @@ let g:tsuquyomi_disable_quickfix = 1
 
 " deoplete tab-complete
 inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
 
@@ -443,6 +445,7 @@ autocmd FileType html setl foldmethod=expr
 autocmd FileType html setl foldexpr=HTMLFolds()
 
 autocmd FileType javascript,typescript,json setl foldmethod=syntax
+autocmd FileType python setl foldmethod=syntax
 
 
 " ==============================================================================
@@ -458,37 +461,26 @@ set guifont=SourceCodePro:h12
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 
+
+
 " ==============================================================================
-" Emmet
+" Python
 " ==============================================================================
 
-" Remapping <C-y>, just doesn't cut it.
-function! s:expand_html_tab()
-" try to determine if we're within quotes or tags.
-" if so, assume we're in an emmet fill area.
- let line = getline('.')
- if col('.') < len(line)
-   let line = matchstr(line, '[">][^<"]*\%'.col('.').'c[^>"]*[<"]')
-   if len(line) >= 2
-      return "\<C-n>"
-   endif
- endif
-" expand anything emmet thinks is expandable.
-if emmet#isExpandable()
-  return emmet#expandAbbrIntelligent("\<tab>")
-  " return "\<C-y>,"
-endif
-" return a regular tab character
-return "\<tab>"
-endfunction
-" let g:user_emmet_expandabbr_key='<Tab>'
-" imap <expr> <tab> emmet#expandAbbrIntelligent("\<tab>")
+let python_highlight_all=1
 
-autocmd FileType html,css,scss imap <silent><buffer><expr><tab> <sid>expand_html_tab()
-let g:user_emmet_mode='a'
-let g:user_emmet_complete_tag = 0
-let g:user_emmet_install_global = 0
-autocmd FileType html,css,scss EmmetInstall
+"python with virtualenv support
+py << EOF
+import os
+import sys
+if 'VIRTUAL_ENV' in os.environ:
+  project_base_dir = os.environ['VIRTUAL_ENV']
+  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
+  execfile(activate_this, dict(__file__=activate_this))
+EOF
+
+let g:ycm_autoclose_preview_window_after_completion=1
+map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 
 " ==============================================================================
