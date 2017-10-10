@@ -188,7 +188,7 @@ set tabstop=2 shiftwidth=2 expandtab
 set conceallevel=0
 set wildmenu
 set laststatus=2
-set wrap linebreak nolist
+set nowrap linebreak nolist
 set wildmode=full
 set autoread
 set autoindent
@@ -211,6 +211,9 @@ nnoremap <silent> <leader>tb :TagbarToggle<CR>
 
 " toggle line numbers
 nnoremap <silent> <leader>n :set number! number?<CR>
+
+" reload config
+nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
@@ -293,15 +296,15 @@ noremap <silent> [H <Home>
 noremap <silent> [F <End>
 noremap <M-Left> <Home>
 noremap <M-Right> <End>
-inoremap <c-d> <esc>ddi   "exit insert, dd line, enter insert
+inoremap <c-d> <esc>ddi
 noremap H ^
 noremap L g_
 noremap J 5j
 noremap K 5k
 noremap <M-Up> 5k
 noremap <M-Down> 5j
-inoremap <M-Up> <esc>5ki   "exit insert, up 5 lines, back to insert
-inoremap <M-Down> <esc>5ji   "exit insert, down 5 lines, back to insert
+inoremap <M-Up> <esc>5ki
+inoremap <M-Down> <esc>5ji
 inoremap <M-Left> <Home>
 inoremap <M-Right> <End>
 
