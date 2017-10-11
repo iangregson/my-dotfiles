@@ -455,7 +455,7 @@ autocmd FileType python setl foldmethod=syntax
 " Devicons
 " ==============================================================================
 
-set guifont=SourceCodePro:h12
+set guifont=Monoid:h12
 
 " ==============================================================================
 " Ctrl-P
@@ -463,6 +463,7 @@ set guifont=SourceCodePro:h12
 
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
 
 
 
