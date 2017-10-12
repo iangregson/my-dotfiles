@@ -42,6 +42,8 @@ Plug 'valloric/MatchTagAlways'
 Plug 'neomake/neomake'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim'
+Plug 'othree/html5.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'moll/vim-node'
 Plug 'mattn/emmet-vim'
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
@@ -66,6 +68,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'chriskempson/base16-vim'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'kristijanhusak/vim-hybrid-material'
+Plug 'mhartington/oceanic-next'
 
 " Initialize plugin system
 call plug#end()
