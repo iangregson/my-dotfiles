@@ -15,23 +15,18 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 " General vim good stuff
 Plug 'tpope/vim-sensible'
-Plug 'chriskempson/base16-vim'
 Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
+Plug 'tpope/vim-repeat'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'terryma/vim-expand-region'
 Plug 'Yggdroot/indentLine'
 Plug 'Raimondi/delimitMate'
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 Plug 'christoomey/vim-tmux-navigator'
-Plug 'ryanoasis/vim-devicons'
 Plug 'mhinz/vim-sayonara', { 'on': 'Sayonara' }
-Plug 'kien/ctrlp.vim'
-Plug 'sirver/ultisnips'
-Plug 'honza/vim-snippets'
+Plug 'ctrlpvim/ctrlp.vim'
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'ervandew/supertab'
@@ -40,6 +35,7 @@ Plug 'ervandew/supertab'
 Plug 'tpope/vim-fugitive'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-gitgutter'
+Plug 'jreybert/vimagit'
 
 " Javascript good stuff
 Plug 'valloric/MatchTagAlways'
@@ -61,99 +57,18 @@ Plug 'mhartington/deoplete-typescript'
 Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
 
+" nerdtree file explorer
+Plug 'scrooloose/nerdtree',
+Plug 'ryanoasis/vim-devicons'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" Colours and themes
+Plug 'chriskempson/base16-vim'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'kristijanhusak/vim-hybrid-material'
+
 " Initialize plugin system
 call plug#end()
-
-
-" ==============================================================================
-" Airline
-" ==============================================================================
-
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
-let g:airline_theme = 'laederon'
-
-set hidden
-
-let g:airline#extensions#tabline#fnamemod = ':t'
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-let g:airline#extensions#neomake#error_symbol='• '
-let g:airline#extensions#neomake#warning_symbol='•  '
-cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
-tmap <leader>x <c-\><c-n>:bp! <BAR> bd! #<CR>
-nmap <leader>, :bnext<CR>
-tmap <leader>, <C-\><C-n>:bnext<cr>
-nmap <leader>. :bprevious<CR>
-tmap <leader>. <C-\><C-n>:bprevious<CR>
-tmap <leader>1  <C-\><C-n><Plug>AirlineSelectTab1
-tmap <leader>2  <C-\><C-n><Plug>AirlineSelectTab2
-tmap <leader>3  <C-\><C-n><Plug>AirlineSelectTab3
-tmap <leader>4  <C-\><C-n><Plug>AirlineSelectTab4
-tmap <leader>5  <C-\><C-n><Plug>AirlineSelectTab5
-tmap <leader>6  <C-\><C-n><Plug>AirlineSelectTab6
-tmap <leader>7  <C-\><C-n><Plug>AirlineSelectTab7
-tmap <leader>8  <C-\><C-n><Plug>AirlineSelectTab8
-tmap <leader>9  <C-\><C-n><Plug>AirlineSelectTab9
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
-let g:airline#extensions#tabline#buffer_idx_format = {
-      \ '0': '0 ',
-      \ '1': '1 ',
-      \ '2': '2 ',
-      \ '3': '3 ',
-      \ '4': '4 ',
-      \ '5': '5 ',
-      \ '6': '6 ',
-      \ '7': '7 ',
-      \ '8': '8 ',
-      \ '9': '9 ',
-      \}
-
-
-
-" ==============================================================================
-" Colors
-" ==============================================================================
-
-set termguicolors
-" Access colors present in 256 colorspace
-let base16colorspace=256
-
-" Base16-shell adds and updates this file with whatever color scheme has been
-" most recently selected
-if filereadable(expand("~/.vimrc_background"))
-  source ~/.vimrc_background
-endif
-
-
-" ==============================================================================
-" NERDTree
-" ==============================================================================
-
-" Bind ctrl+\ to toggle NERDTree
-nnoremap <C-\> :NERDTreeToggle<CR>
-nnoremap <M-\> :NERDTreeToggle<CR>
-nnoremap <D-\> :NERDTreeToggle<CR>
-
-let NERDTreeShowHidden=1
-
-" Auto start NERD tree when opening a directory
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
-
-" Auto start NERD tree if no files are specified
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | exe 'NERDTree' | endif
-
-" Let quit work as expected if after entering :q the only window left open is NERD Tree itself
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
 
 " ==============================================================================
 " System
@@ -180,11 +95,9 @@ set pastetoggle=<f6>
 set nopaste
 autocmd BufWritePre * %s/\s\+$//e
 set noshowmode
-set noswapfile
 filetype on
 set number
 set numberwidth=1
-set tabstop=2 shiftwidth=2 expandtab
 set conceallevel=0
 set wildmenu
 set laststatus=2
@@ -218,22 +131,37 @@ nnoremap <leader>r :source ~/.config/nvim/init.vim<CR>
 let g:python2_host_prog = '/usr/local/bin/python'
 let g:python3_host_prog = '/usr/local/bin/python3'
 
+" ==============================================================================
+" Turn off swap files
+" ==============================================================================
+
+set noswapfile
+set nobackup
+set nowb
+
+" ==============================================================================
+" Persistent Undo
+" ==============================================================================
+
+" Keep undo history across sessions, by storing in file.
+silent !mkdir ~/.config/nvim/backups > /dev/null 2>&1
+set undodir=~/.config/nvim/backups
+set undofile
+
+" ==============================================================================
+" Indentation
+" ==============================================================================
+
+set shiftwidth=2
+set softtabstop=2
+set tabstop=2
+set expandtab
+set smartindent
+set colorcolumn=80
 
 " ==============================================================================
 " Working with buffers
 " ==============================================================================
-
-" toggle buffer (switch between current and last buffer)
-nnoremap <silent> <leader>bb <C-^>
-
-" go to next buffer
-nnoremap <silent> <leader>b :bn<CR>
-nnoremap <C-l> :bn<CR>
-
-" go to previous buffer
-nnoremap <silent> <leader>p :bp<CR>
-" https://github.com/neovim/neovim/issues/2048
-nnoremap <C-h> :bp<CR>
 
 " close buffer
 nnoremap <silent> <leader>x :Sayonara!<CR>
@@ -241,10 +169,8 @@ nnoremap <silent> <leader>x :Sayonara!<CR>
 " kill buffer
 nnoremap <silent> <leader>k :Sayonara<CR>
 
-" list buffers
-nnoremap <silent> <leader>bl :ls<CR>
 " list and select buffer
-nnoremap <silent> <leader>bg :ls<CR>:buffer<Space>
+nnoremap <silent> <leader>bl :ls<CR>:buffer<Space>
 
 " horizontal split with new buffer
 nnoremap <silent> <leader>bh :new<CR>
@@ -255,6 +181,32 @@ nnoremap <silent> <leader>bv :vnew<CR>
 " redraw screan and clear search highlighted items
 "http://stackoverflow.com/questions/657447/vim-clear-last-search-highlighting#answer-25569434
 nnoremap <silent> <C-L> :nohlsearch<CR><C-L>
+" Clear search highlight
+nnoremap <Leader><space> :noh<CR>
+
+" Toggle between last 2 buffers
+nnoremap <leader><tab> <c-^>
+
+" Toggle buffer list
+nnoremap <Leader>b :CtrlPBuffer<CR>
+nnoremap <Leader>t :CtrlPBufTag<CR>
+nnoremap <Leader>m :CtrlPMRU<CR>
+
+" Maps for indentation in normal mode
+nnoremap <tab> >>
+nnoremap <s-tab> <<
+
+" Indenting in visual mode
+xnoremap <s-tab> <gv
+xnoremap <tab> >gv
+
+" Resize window with shift + and shift -
+nnoremap + <c-w>5>
+nnoremap _ <c-w>5<
+
+" Center highlighted search
+nnoremap n nzz
+nnoremap N Nzz
 
 " save with alt s
 map <M-s> <esc>:w<CR>
@@ -266,6 +218,18 @@ nnoremap <leader>k <C-w>k
 nnoremap <leader>j <C-w>j
 nnoremap <leader>h <C-w>h
 nnoremap <leader>t <C-w>T
+
+" Open vertical split
+nnoremap <Leader>v <C-w>v
+
+"Disable ex mode mapping
+map Q <Nop>
+
+" Generate tags
+nnoremap <Leader>gt :sp term://ctags -R --exclude=node_modules .<CR>G
+
+" Jump to definition in vertical split
+nnoremap <Leader>] <C-W>v<C-]>
 
 
 " ==============================================================================
@@ -317,8 +281,46 @@ vnoremap <C-Down> :m '>+1<CR>gv=gv
 vnoremap <C-Up> :m '<-2<CR>gv=gv
 
 " Don't put changes in the register
-nnoremap <silent>c "_c
-nnoremap <silent>d "_d
+nnoremap c "_c
+nnoremap d "_d
+nnoremap x "_x
+
+" Move to the end of yanked text after yank and paste
+nnoremap p p`]
+vnoremap y y`]
+vnoremap p p`]
+
+" Yank to the end of the line
+nnoremap Y y$
+
+"auto indent on enter
+let g:delimitMate_expand_cr = 1
+
+let g:user_emmet_expandabbr_key = '<c-e>'                                       "Change trigger emmet key
+let g:user_emmet_next_key = '<c-n>'                                             "Change trigger jump to next for emmet
+
+" ==============================================================================
+" NERDTree
+" ==============================================================================
+
+" Bind ctrl+\ to toggle NERDTree
+nnoremap <C-\> :NERDTreeToggle<CR>
+nnoremap <M-\> :NERDTreeToggle<CR>
+nnoremap <D-\> :NERDTreeToggle<CR>
+
+let NERDTreeShowHidden=1
+
+if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | wincmd p | endif
+
+" Auto start NERD tree if no files are specified
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | exe 'NERDTree' | endif
+
+" Let quit work as expected if after entering :q the only window left open is NERD Tree itself
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" Find current file in NERDTree
+nnoremap <Leader>hf :NERDTreeFind<CR>
 
 " ==============================================================================
 " Deoplete
@@ -343,10 +345,19 @@ let g:tsuquyomi_javascript_support = 1
 let g:tsuquyomi_auto_open = 1
 let g:tsuquyomi_disable_quickfix = 1
 
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 " tern
 autocmd FileType javascript nnoremap <silent> <buffer> gb :TernDef<CR>
+
+" Expand snippets on tab if snippets exists, otherwise do autocompletion
+imap <expr><TAB> neosnippet#expandable_or_jumpable() ?
+      \ "\<Plug>(neosnippet_expand_or_jump)"
+      \ : pumvisible() ? "\<C-n>" : "\<TAB>"
+" If popup window is visible do autocompletion from back
+" imap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+" Fix for jumping over placeholders for neosnippet
+smap <expr><TAB> neosnippet#jumpable() ?
+      \ "\<Plug>(neosnippet_jump)"
+      \: "\<TAB>"
 
 inoremap <expr><C-h>
       \ deolete#mappings#smart_close_popup()."\<C-h>"
@@ -391,6 +402,8 @@ autocmd WinEnter * call Preview_func()
 let g:deoplete#ignore_sources = {}
 let g:deoplete#ignore_sources._ = ['around']
 
+let g:neosnippet#disable_runtime_snippets = {'_' : 1}                           "Snippets setup
+let g:neosnippet#snippets_directory = ['~/.config/nvim/snippets']               "Snippets directory
 
 " ==============================================================================
 " Neomake
@@ -455,7 +468,24 @@ autocmd FileType python setl foldmethod=syntax
 " Devicons
 " ==============================================================================
 
-set guifont=Monoid:h12
+set encoding=utf8
+set guifont=Monoid\ Nerd\ Font:h11
+
+" whether or not to show the nerdtree brackets around flags
+let g:webdevicons_conceal_nerdtree_brackets = 1
+" the amount of space to use after the glyph character (default ' ')
+let g:WebDevIconsNerdTreeAfterGlyphPadding = '  '
+" Force extra padding in NERDTree so that the filetype icons line up vertically
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+" enable folder/directory glyph flag (disabled by default with 0)
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+" enable open and close folder/directory glyph flags (disabled by default with 0)
+let g:DevIconsEnableFoldersOpenClose = 1
+
+" after a re-source, fix syntax matching issues (concealing brackets):
+if exists('g:loaded_webdevicons')
+    call webdevicons#refresh()
+endif
 
 " ==============================================================================
 " Ctrl-P
@@ -495,6 +525,79 @@ au BufNewFile,BufRead *.py
     \ set expandtab
     \ set autoindent
     \ set fileformat=unix
+
+" ==============================================================================
+" Airline
+" ==============================================================================
+
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'laederon'
+
+set hidden
+
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+let g:airline#extensions#neomake#error_symbol='• '
+let g:airline#extensions#neomake#warning_symbol='•  '
+cnoreabbrev <silent> <expr> x getcmdtype() == ":" && getcmdline() == 'x' ? 'Sayonara' : 'x'
+tmap <leader>x <c-\><c-n>:bp! <BAR> bd! #<CR>
+nmap <leader>, :bnext<CR>
+tmap <leader>, <C-\><C-n>:bnext<cr>
+nmap <leader>. :bprevious<CR>
+tmap <leader>. <C-\><C-n>:bprevious<CR>
+tmap <leader>1  <C-\><C-n><Plug>AirlineSelectTab1
+tmap <leader>2  <C-\><C-n><Plug>AirlineSelectTab2
+tmap <leader>3  <C-\><C-n><Plug>AirlineSelectTab3
+tmap <leader>4  <C-\><C-n><Plug>AirlineSelectTab4
+tmap <leader>5  <C-\><C-n><Plug>AirlineSelectTab5
+tmap <leader>6  <C-\><C-n><Plug>AirlineSelectTab6
+tmap <leader>7  <C-\><C-n><Plug>AirlineSelectTab7
+tmap <leader>8  <C-\><C-n><Plug>AirlineSelectTab8
+tmap <leader>9  <C-\><C-n><Plug>AirlineSelectTab9
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
+let g:airline#extensions#tabline#buffer_idx_format = {
+      \ '0': '0 ',
+      \ '1': '1 ',
+      \ '2': '2 ',
+      \ '3': '3 ',
+      \ '4': '4 ',
+      \ '5': '5 ',
+      \ '6': '6 ',
+      \ '7': '7 ',
+      \ '8': '8 ',
+      \ '9': '9 ',
+      \}
+
+
+" ==============================================================================
+" Colors and fonts
+" ==============================================================================
+
+set termguicolors
+" Access colors present in 256 colorspace
+let base16colorspace=256
+
+" Base16-shell adds and updates this file with whatever color scheme has been
+" most recently selected
+if filereadable(expand("~/.vimrc_background"))
+  source ~/.vimrc_background
+endif
+
+let g:enable_bold_font = 1                                                      "Enable bold font in colorscheme
+let g:enable_italic_font = 1                                                    "Enable italic font in colorscheme
+
+set background=dark
+
+"silent! colorscheme hybrid_material
 
 
 " ==============================================================================
