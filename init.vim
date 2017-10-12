@@ -100,6 +100,7 @@ set number
 set numberwidth=1
 set conceallevel=0
 set wildmenu
+set lazyredraw
 set laststatus=2
 set nowrap linebreak nolist
 set wildmode=full
@@ -157,7 +158,7 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 set smartindent
-set colorcolumn=80
+set colorcolumn=140
 
 " ==============================================================================
 " Working with buffers
