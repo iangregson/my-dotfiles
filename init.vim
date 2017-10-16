@@ -51,10 +51,13 @@ Plug 'groenewege/vim-less'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'ternjs/tern_for_vim', { 'for': ['javascript', 'javascript.jsx'], 'do': 'npm install && npm install -g tern' }
-Plug 'carlitux/deoplete-ternjs', { 'for': ['javascript', 'javascript.jsx'] }
-Plug 'othree/jspc.vim', { 'for': ['javascript', 'javascript.jsx'] }
-
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install && npm install -g tern' }
+Plug 'carlitux/deoplete-ternjs'
+Plug 'othree/jspc.vim'
+"Typescript Plugins
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+Plug 'Quramy/tsuquyomi', { 'do': 'npm install -g typescript' }
+Plug 'mhartington/deoplete-typescript'
 
 " Python
 Plug 'davidhalter/jedi-vim'
@@ -393,27 +396,34 @@ autocmd FileType python setl foldmethod=syntax
 " Deoplete
 " ==============================================================================
 
+let g:used_javascript_libs = 'lodash,angularjs,jasmine,chai'
+
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#enable_ignore_case = 1
 let g:deoplete#enable_smart_case = 1
 let g:deoplete#enable_camel_case = 1
 let g:deoplete#enable_refresh_always = 1
-let g:used_javascript_libs = 'lodash,angularjs,jasmine,chai'
+let g:deoplete#max_abbr_width = 0
+let g:deoplete#max_menu_width = 0
+let g:deoplete#omni#input_patterns = get(g:,'deoplete#omni#input_patterns',{})
+call deoplete#custom#set('_', 'matchers', ['matcher_full_fuzzy'])
+
+let g:tern_request_timeout = 1
+let g:tern_request_timeout = 6000
+let g:tern#command = ["tern"]
+let g:tern#arguments = ["--persistent"]
+let g:deoplete#sources#tss#javascript_support = 1
+let g:tsuquyomi_javascript_support = 1
+let g:tsuquyomi_auto_open = 1
+let g:tsuquyomi_disable_quickfix = 1
 
 autocmd FileType javascript,javascript.jsx nnoremap <silent><buffer> gd :<C-U>TernDef<CR>
 autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
 
-let g:deoplete#omni#functions = {}
-let g:deoplete#omni#functions.javascript = [
-  \ 'tern#Complete',
-  \ 'jspc#omni'
-\]
-
 set completeopt=longest,menuone,preview
+
 let g:deoplete#sources = {}
 let g:deoplete#sources['javascript.jsx'] = ['file', 'ultisnips', 'ternjs']
-let g:tern#command = ['tern']
-let g:tern#arguments = ['--persistent']
 
 autocmd FileType javascript let g:SuperTabDefaultCompletionType = "<c-x><c-o>"
 let g:UltiSnipsExpandTrigger="<C-j>"
@@ -464,7 +474,6 @@ endif
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
-
 
 
 " ==============================================================================
