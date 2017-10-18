@@ -72,6 +72,7 @@ alias start='npm start'
 alias chrome-debug='/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --remote-debugging-port=9222'
 alias plain='THEME=plain zsh'
 alias bullet='THEME=bullet zsh'
+alias publicip='dig +short myip.opendns.com @resolver1.opendns.com'
 # incase i forget how to clear
 alias c='clear'
 alias k='clear'
