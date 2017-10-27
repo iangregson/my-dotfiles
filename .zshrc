@@ -112,5 +112,8 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:`yarn global bin`"
 export PATH="$HOME/.yarn/bin:$PATH"
 
+# python
+export PATH="$PATH:$HOME/Library/Python/3.4/bin"
+
 # ZSH completions
 fpath=(/usr/local/share/zsh-completions $fpath)
