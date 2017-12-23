@@ -31,6 +31,7 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('christoomey/vim-tmux-navigator')
 call dein#add('mhinz/vim-sayonara', { 'on': 'Sayonara' })
 call dein#add('ctrlpvim/ctrlp.vim')
+call dein#add('wincent/terminus')
 " call dein#add('ervandew/supertab')
 
 " Git
