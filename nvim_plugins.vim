@@ -71,6 +71,7 @@ Plug 'kristijanhusak/vim-hybrid-material'
 Plug 'mhartington/oceanic-next'
 Plug 'lifepillar/vim-solarized8'
 Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim'
 
 " Initialize plugin system
 call plug#end()
@@ -126,4 +127,3 @@ call deoplete#custom#set('omni', 'mark', '⌾')
 call deoplete#custom#set('file', 'mark', 'file')
 call deoplete#custom#set('jedi', 'mark', '')
 call deoplete#custom#set('neosnippet', 'mark', '')
-

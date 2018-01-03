@@ -96,7 +96,11 @@ alias fh='open -a Finder .'
 alias slack="open -a '/Applications/Slack.app'"
 alias macdown="open -a '/Applications/MacDown.app'"
 alias trello="open -a '/Applications/Trello.app'"
-
+# Notepad & logbook
+alias notepad="vim ~/Dropbox/notes/Buffer"
+function lb() {
+    vim ~/logbook/$(date '+%Y-%m-%d').md
+}
 
 # ===============
 # Environment
