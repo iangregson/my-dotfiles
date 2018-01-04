@@ -47,7 +47,7 @@ source ~/.bashrc
 alias ga='git add . -A '
 alias gs='git status '
 alias gpull='git pull '
-alias go='git checkout '
+alias gco='git checkout '
 alias gob='git checkout -b '
 alias gc='git commit -am '
 alias gb='git branch '
