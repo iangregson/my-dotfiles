@@ -36,6 +36,7 @@ call dein#add('ervandew/supertab')
 
 " syntax
 call dein#add('sheerun/vim-polyglot')
+call dein#add('fatih/vim-go')
 
 " Git
 call dein#add('tpope/vim-fugitive')

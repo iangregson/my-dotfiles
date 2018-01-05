@@ -119,5 +119,11 @@ export PATH="$HOME/.yarn/bin:$PATH"
 # python
 export PATH="$PATH:$HOME/Library/Python/3.4/bin"
 
+# go
+export GOPATH=$HOME/go
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOROOT/bin
+
 # ZSH completions
 fpath=(/usr/local/share/zsh-completions $fpath)
