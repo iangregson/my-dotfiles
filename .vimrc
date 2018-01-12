@@ -185,6 +185,10 @@ noremap <M-Up> 5k
 noremap <M-Down> 5j
 inoremap <M-Up> <esc>5ki
 inoremap <M-Down> <esc>5ji
+nnoremap <S-Up> 5k
+nnoremap <S-Down> 5j
+inoremap <S-Up> 5k
+inoremap <S-Down> 5j
 inoremap <M-Left> <Home>
 inoremap <M-Right> <End>
 
@@ -364,7 +368,7 @@ map <Leader>k <Plug>(easymotion-k)
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'laederon'
+let g:airline_theme = 'tomorrow'
 
 set hidden
 
