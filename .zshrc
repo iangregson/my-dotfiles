@@ -117,7 +117,7 @@ export PATH="$PATH:`yarn global bin`"
 export PATH="$HOME/.yarn/bin:$PATH"
 
 # python
-export PATH="$PATH:$HOME/Library/Python/3.4/bin"
+export PATH="$PATH:$HOME/Library/Python/3.4/bin:/usr/local/bin/python"
 
 # go
 export GOPATH=$HOME/go
@@ -127,3 +127,6 @@ export PATH=$PATH:$GOROOT/bin
 
 # ZSH completions
 fpath=(/usr/local/share/zsh-completions $fpath)
+
+# aws
+export PATH=$PATH:~/.local/bin
