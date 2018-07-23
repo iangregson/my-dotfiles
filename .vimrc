@@ -37,6 +37,7 @@ call dein#add('ervandew/supertab')
 " syntax
 call dein#add('sheerun/vim-polyglot')
 call dein#add('fatih/vim-go')
+call dein#add('mdempsky/gocode', { 'rtp': 'vim', 'do': '~/.vim/repos/github.com/mdempsky/gocode/vim/symlink.sh' })
 
 " Git
 call dein#add('tpope/vim-fugitive')
@@ -132,7 +133,7 @@ set softtabstop=2
 set tabstop=2
 set expandtab
 set smartindent
-set colorcolumn=140
+set colorcolumn=100
 
 " Open vertical split
 nnoremap <Leader>v <C-w>v
@@ -328,16 +329,14 @@ let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -
 " ==============================================================================
 
 let python_highlight_all=1
+au FileType python setl shiftwidth=4 tabstop=4
 
-" Proper indentation for python if we're in a .py
-au BufNewFile,BufRead *.py
-    \ set tabstop=4
-    \ set softtabstop=4
-    \ set shiftwidth=4
-    \ set textwidth=79
-    \ set expandtab
-    \ set autoindent
-    \ set fileformat=unix
+
+" ==============================================================================
+" Go
+" ==============================================================================
+
+au FileType go setl shiftwidth=4 tabstop=4
 
 
 " ==============================================================================
