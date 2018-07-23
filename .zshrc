@@ -119,9 +119,6 @@ export NVM_DIR="$HOME/.nvm"
 export PATH="$PATH:`yarn global bin`"
 export PATH="$HOME/.yarn/bin:$PATH"
 
-# python
-# export PATH="$PATH:$HOME/Library/Python/3.4/bin"
-
 # go
 export GOPATH=$HOME/go
 export GOROOT=/usr/local/opt/go/libexec
@@ -143,3 +140,5 @@ if [ -f '/Users/iangregson/google-cloud-sdk/path.zsh.inc' ]; then source '/Users
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/Users/iangregson/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/iangregson/google-cloud-sdk/completion.zsh.inc'; fi
+# aws
+export PATH=$PATH:~/.local/bin
