@@ -38,15 +38,39 @@ set hidden
 " ====================================
 
 map ; :
-map l $
 let mapleader=","
 inoremap ;; <Esc>
 
+set nowrap linebreak nolist
+set conceallevel=0
+set lazyredraw
+set colorcolumn=100
+
+" open new split panes to right and below (as you probably expect)
+set splitright
+set splitbelow
+
+" Use OSX clipboard and don't auto indent on paste
+set clipboard=unnamed
+set nopaste
+
+" Turn off swap files
+set noswapfile
+set nobackup
+set nowb
+
+" Keep undo history across sessions, by storing in file.
+silent !mkdir ~/.vim/backup > /dev/null 2>&1
+set undodir=~/.vim/backups
+set undofile
+
+"Disable ex mode mapping
+map Q <Nop>
+
+"Disable macros
+map q <Nop>
 " toggle line numbers
 nnoremap <silent> <leader>n :set number! number?<CR>
-
-" reload config
-nnoremap <leader>r :source ~/.vimrc<CR>
 
 " toggle mouse mode
 function! ToggleMouse()
@@ -60,3 +84,9 @@ function! ToggleMouse()
     endif
 endfunc
 nnoremap <leader>m :call ToggleMouse()<CR>
+
+" some basic key maps for faster mashing around
+nnoremap J 5j
+nnoremap K 5k
+nnoremap H 5h
+nnoremap L 5l
