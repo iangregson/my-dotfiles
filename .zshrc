@@ -142,3 +142,7 @@ if [ -f '/Users/iangregson/google-cloud-sdk/path.zsh.inc' ]; then source '/Users
 if [ -f '/Users/iangregson/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/iangregson/google-cloud-sdk/completion.zsh.inc'; fi
 # aws
 export PATH=$PATH:~/.local/bin
+
+# Kubernetes
+source <(kubectl completion zsh)
+export PATH="$PATH:/Users/iangregson/istio-0.8.0/bin"
