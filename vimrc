@@ -60,6 +60,8 @@ call dein#end()
 set mouse=a
 set number
 set numberwidth=1
+set nowrap
+set colorcolumn=120
 
 map ; :
 let mapleader=","
@@ -119,8 +121,8 @@ map q <Nop>
 " Command auto-complete menu options
 set wildmenu
 set wildmode=full
-set path+=**                                                                    
-set wildignore+=**/node_modules/** 
+set path+=**
+set wildignore+=**/node_modules/**
 
 set ttyfast                     " Indicate fast terminal conn for faster redraw
 set ttymouse=xterm2             " Indicate terminal type for mouse codes
@@ -211,6 +213,7 @@ augroup END
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_powerline_fonts = 1
 let g:airline_left_sep=''
 let g:airline_right_sep=''
@@ -223,3 +226,7 @@ let delimitMate_expand_cr = 1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+
+" =================
+
+source ~/.vimrc_background
