@@ -82,8 +82,10 @@ nnoremap L 5l
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
+
 " Enable to copy to clipboard for operations like yank, delete, change and put
 " http://stackoverflow.com/questions/20186975/vim-mac-how-to-copy-to-clipboard-without-pbcopy
+set clipboard^=unnamed
 if has('unnamedplus')
   set clipboard^=unnamed
   set clipboard^=unnamedplus
