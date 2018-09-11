@@ -211,6 +211,12 @@ augroup go
   autocmd Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
 augroup END
 
+augroup js
+  autocmd!
+  " Show by default 2 spaces for a tab
+  autocmd BufNewFile,BufRead *.js setlocal expandtab tabstop=2 shiftwidth=2
+augroup END
+
 " airline
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
