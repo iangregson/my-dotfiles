@@ -27,10 +27,12 @@ call dein#add('tpope/vim-vinegar')
 call dein#add('vim-airline/vim-airline')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('wincent/terminus')
+call dein#add('majutsushi/tagbar')
 
 " syntax
 call dein#add('sheerun/vim-polyglot')
 call dein#add('fatih/vim-go', { 'build': 'GoInstallBinaries' })
+call dein#add('rust-lang/rust.vim')
 
 " Git
 call dein#add('tpope/vim-fugitive')
@@ -234,6 +236,19 @@ let delimitMate_expand_cr = 1
 let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files --exclude-standard -co']
+
+" syntastic
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+" rust-lang
+let g:rustfmt_autosave = 1
 
 " =================
 

@@ -116,6 +116,9 @@ alias notepad="vim ~/Dropbox/notes/Buffer"
 function lb() {
     vim ~/logbook/$(date '+%Y-%m-%d').md
 }
+function dlb() {
+    vim ~/Dropbox/logbook/$(date '+%Y-%m-%d').md
+}
 
 # ===============
 # Environment
