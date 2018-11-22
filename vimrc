@@ -33,6 +33,7 @@ call dein#add('majutsushi/tagbar')
 call dein#add('sheerun/vim-polyglot')
 call dein#add('fatih/vim-go', { 'build': 'GoInstallBinaries' })
 call dein#add('rust-lang/rust.vim')
+call dein#add('zxqfl/tabnine-vim')
 
 " Git
 call dein#add('tpope/vim-fugitive')

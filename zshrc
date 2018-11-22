@@ -42,7 +42,6 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 # ===============
 plugins=(git git-extras emoji node golang npm)
 source $ZSH/oh-my-zsh.sh
-PROMPT="$PROMPT$emoji[skull]  "
 
 
 # ===============
@@ -142,10 +141,6 @@ fpath=(/usr/local/share/zsh-completions $fpath)
 # AWS completions
 source /usr/local/bin/aws_zsh_completer.sh
 
-# MacPorts
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export MANPATH=/opt/local/share/man:$MANPATH
-
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/iangregson/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/iangregson/google-cloud-sdk/path.zsh.inc'; fi
 
@@ -157,3 +152,10 @@ export PATH=$PATH:~/.local/bin
 # Kubernetes
 source <(kubectl completion zsh)
 export PATH="$PATH:/Users/iangregson/istio-0.8.0/bin"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/iangregson/.nvm/versions/node/v10.4.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/iangregson/.nvm/versions/node/v10.4.1/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/iangregson/.nvm/versions/node/v10.4.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/iangregson/.nvm/versions/node/v10.4.1/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
