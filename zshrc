@@ -40,7 +40,7 @@ BASE16_SHELL=$HOME/.config/base16-shell/
 # ===============
 # Plugins
 # ===============
-plugins=(git git-extras emoji node golang npm)
+plugins=(git git-extras emoji node golang npm kubectl aws)
 source $ZSH/oh-my-zsh.sh
 
 
