@@ -5,7 +5,7 @@
 export ZSH=$HOME/.oh-my-zsh
 POWERLEVEL9K_MODE='nerdfont-complete'
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status node_version time)
-THEME=${THEME:=cloud}
+THEME=${THEME:=spaceship}
 if [[ $THEME = "power" ]]
 then
   THEME="powerlevel9k/powerlevel9k"
@@ -47,7 +47,7 @@ source $ZSH/oh-my-zsh.sh
 # ===============
 # Other rcs
 # ===============
-source ~/.bashrc
+# source ~/.bashrc
 
 
 # ===============
@@ -153,3 +153,10 @@ export PATH=$PATH:~/.local/bin
 source <(kubectl completion zsh)
 export PATH="$PATH:/Users/iangregson/istio-0.8.0/bin"
 
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/iangregson/ng/srs-universal-pwa/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/iangregson/ng/srs-universal-pwa/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/iangregson/ng/srs-universal-pwa/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/iangregson/ng/srs-universal-pwa/node_modules/tabtab/.completions/sls.zsh

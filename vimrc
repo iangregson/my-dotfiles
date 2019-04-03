@@ -28,12 +28,15 @@ call dein#add('vim-airline/vim-airline')
 call dein#add('ctrlpvim/ctrlp.vim')
 call dein#add('wincent/terminus')
 call dein#add('majutsushi/tagbar')
+call dein#add('Shougo/vimproc.vim', {'build' : 'make'})
 
 " syntax
 call dein#add('sheerun/vim-polyglot')
 call dein#add('fatih/vim-go', { 'build': 'GoInstallBinaries' })
 call dein#add('rust-lang/rust.vim')
+call dein#add('Quramy/tsuquyomi')
 call dein#add('zxqfl/tabnine-vim')
+call dein#add('w0rp/ale')
 
 " Git
 call dein#add('tpope/vim-fugitive')
@@ -43,13 +46,6 @@ call dein#add('jreybert/vimagit')
 
 " Colours and themes
 call dein#add('ryanoasis/vim-devicons')
-call dein#add('chriskempson/base16-vim')
-call dein#add('vim-airline/vim-airline-themes')
-call dein#add('kristijanhusak/vim-hybrid-material')
-call dein#add('mhartington/oceanic-next')
-call dein#add('lifepillar/vim-solarized8')
-call dein#add('joshdick/onedark.vim')
-call dein#add('dracula/vim')
 
 if dein#check_install()
   call dein#install()
@@ -151,9 +147,6 @@ set pumheight=10                " Completion window max size
 
 let g:netrw_liststyle=3
 
-colorscheme base16-nord
-set tgc
-
 """""""""""""""""""""
 "      Plugins      "
 """""""""""""""""""""
@@ -253,4 +246,4 @@ let g:rustfmt_autosave = 1
 
 " =================
 
-source ~/.vimrc_background
+" source ~/.vimrc_background
