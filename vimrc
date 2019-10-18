@@ -56,12 +56,13 @@ call dein#end()
 """""""""""""""""""""
 "      System       "
 """""""""""""""""""""
+set nocompatible
 set mouse=a
 set number
 set numberwidth=1
 set nowrap
 set colorcolumn=120
-
+set background=dark
 map ; :
 let mapleader=","
 inoremap ;; <Esc>

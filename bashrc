@@ -1,5 +1,8 @@
 export PS1="\W $ "
 
+set -o vi
+export TERM=xterm-256color
+
 # ===============
 # Aliases
 # ===============
@@ -28,10 +31,13 @@ function lb() {
 # ===============
 
 export PATH="/usr/local/bin:${PATH}"
+export PATH="~/Rekener/app/common/bin/:$PATH"
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # go
 export GOPATH=$HOME/go
@@ -40,10 +46,4 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
 # aws
-export PATH=$PATH:~/.local/bin
-
-# Postgres
-alias start-postgres='pg_ctl -D ~/PostgreSQL/data/pg95 start'
-alias stop-postgres='pg_ctl -D ~/PostgreSQL/data/pg95 stop'
-export PATH="$PATH:$HOME/PostgreSQL/pg95/bin"
-export PGDATA="$HOME/PostgreSQL/data/pg95"
+export PATH="~/Library/Python/3.7/bin:${PATH}"
