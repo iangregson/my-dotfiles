@@ -71,3 +71,4 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
+export EDITOR=vim
