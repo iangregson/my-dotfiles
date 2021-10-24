@@ -1,9 +1,6 @@
 # with thanks to https://github.com/fatih/dotfiles
 
 all:
-	mkdir -p ~/.config/nvim
-
-	[ -f ~/.config/nvim/init.vim ] || ln -s $(PWD)/init.vim ~/.config/nvim/init.vim
 	[ -f ~/.vimrc ] || ln -s $(PWD)/vimrc ~/.vimrc
 	[ -f ~/.zshrc ] || ln -s $(PWD)/zshrc ~/.zshrc
 	[ -f ~/.bashrc ] || ln -s $(PWD)/bashrc ~/.bashrc
