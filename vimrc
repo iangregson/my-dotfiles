@@ -11,7 +11,7 @@ set number
 set cindent
 set numberwidth=1
 set nowrap
-set colorcolumn=120
+set colorcolumn=92
 set background=dark
 set encoding=utf-8
 
