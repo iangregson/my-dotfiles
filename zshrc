@@ -19,6 +19,9 @@ alias ll='ls -al'
 alias l='ls -a'
 alias l1='ls -1'
 
+# trying neovim
+alias vi='nvim'
+alias vim='nvim'
 
 # ===============
 # Environment
@@ -27,6 +30,5 @@ alias l1='ls -1'
 export PATH="/usr/local/bin:${PATH}"
 
 # load rekener specific config if it exists
-[ -s "~/.rekener-env" ] && . "~/.rekener-env"
-
+[[ -f "$HOME/.rekener-env" ]] && source "$HOME/.rekener-env"
 
